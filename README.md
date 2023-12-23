@@ -1,7 +1,7 @@
-# Cara menjalankan
+# UTS Pemrograman WEB Lanjut 2023
 
-1. Clone repository ini
-2. Buka terminal dan arahkan ke folder repository ini
-3. Jalankan perintah `npm install`
-4. Jalankan perintah `npm run dev`
-5. Pastikan backend sudah berjalan
+## Cara Menjalankan Sistem
+
+1. Pastikan Backend telah aktif
+2. Jalankan `npm install`
+3. Jalankan `npm run dev`

@@ -1,32 +1,45 @@
 import {
+  Outlet,
   Route,
   RouterProvider,
   createBrowserRouter,
   createRoutesFromElements,
 } from "react-router-dom";
-import HomeLayout from "./HomeLayout";
-import Home from "./Home";
-import TambahKomputer from "./TambahKomputer";
-import Detail from "./Detail";
-import Edit from "./Edit";
-import Cart from "./Cart";
+import Nav from "./layouts/Nav";
+import Footer from "./layouts/Footer";
+import Beranda from "./pages/Beranda";
+import RincianBuku from "./pages/RincianBuku";
+import EditBuku from "./pages/EditBuku";
+import TambahBukuBaru from "./pages/TambahBuku";
+
+const route = createBrowserRouter(
+  createRoutesFromElements(
+    <Route
+      path="/"
+      element={
+        <>
+          <Nav />
+          <main className="flex flex-1 flex-col">
+            <Outlet />
+          </main>
+          <Footer />
+        </>
+      }
+    >
+      <Route index element={<Beranda />} />
+      <Route path="buku/:id" element={<RincianBuku />} />
+      <Route path="edit-buku/:id" element={<EditBuku />} />
+      <Route path="tambah-buku-baru" element={<TambahBukuBaru />} />
+    </Route>
+  )
+);
 
 const App = () => {
-  const router = createBrowserRouter(
-    createRoutesFromElements(
-      <>
-        <Route element={<HomeLayout />}>
-          <Route path="/" element={<Home />} />
-          <Route path="/tambah" element={<TambahKomputer />} />
-          <Route path="/detail/:id" element={<Detail />} />
-          <Route path="/edit/:id" element={<Edit />} />
-          <Route path="/cart" element={<Cart />} />
-        </Route>
-      </>
-    )
+  return (
+    <>
+      <RouterProvider router={route} />
+    </>
   );
-
-  return <RouterProvider router={router} />;
 };
 
 export default App;
